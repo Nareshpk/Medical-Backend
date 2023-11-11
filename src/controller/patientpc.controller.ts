@@ -24,7 +24,7 @@ export class PatientPcController {
     @hasRole(Role.superadmin)
 	@UseGuards(JwtAuthGuard, RolesGuard)
     @Put("update")
-    update(@Body() patientPcDTO: PatientPcDTO): Promise<Patientpc001mb> {
+    update(@Body() patientPcDTO: PatientPcDTO[]): Promise<Patientpc001mb> {
         return this.patientPCService.update(patientPcDTO);
     }
 
@@ -44,9 +44,9 @@ export class PatientPcController {
 
     @hasRole(Role.superadmin)
 	@UseGuards(JwtAuthGuard, RolesGuard)
-    @Get('slNo')
-    findOne(@Param('slNo') slNo: number): Promise<Patientpc001mb> {
-        return this.patientPCService.findOne(slNo);
+    @Get(':id')
+    findOne(@Param('id') id: number): Promise<Patientpc001mb> {        
+        return this.patientPCService.findOne(id);
     }
 
     @hasRole(Role.superadmin)

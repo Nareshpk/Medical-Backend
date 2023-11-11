@@ -1,0 +1,533 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.5.9
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema medical
+--
+
+CREATE DATABASE IF NOT EXISTS medical;
+USE medical;
+
+--
+-- Definition of table `dayilyexpenses001mb`
+--
+
+DROP TABLE IF EXISTS `dayilyexpenses001mb`;
+CREATE TABLE `dayilyexpenses001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `notes` varchar(40) NOT NULL,
+  `amount` int(40) NOT NULL,
+  `date` datetime NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dayilyexpenses001mb`
+--
+
+/*!40000 ALTER TABLE `dayilyexpenses001mb` DISABLE KEYS */;
+INSERT INTO `dayilyexpenses001mb` (`sl_no`,`unitslno`,`name`,`notes`,`amount`,`date`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,'Test','Test',100,'2023-11-04 05:30:00','Naresh','2023-11-04 18:22:41',NULL,NULL);
+/*!40000 ALTER TABLE `dayilyexpenses001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `department001mb`
+--
+
+DROP TABLE IF EXISTS `department001mb`;
+CREATE TABLE `department001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `sslno` int(11) NOT NULL,
+  `department` varchar(50) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`),
+  KEY `sslno` (`sslno`),
+  CONSTRAINT `department001mb_ibfk_1` FOREIGN KEY (`sslno`) REFERENCES `status001mb` (`sl_no`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `department001mb`
+--
+
+/*!40000 ALTER TABLE `department001mb` DISABLE KEYS */;
+INSERT INTO `department001mb` (`sl_no`,`sslno`,`department`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,8,'Admin Management','rizwana','2021-09-06 13:18:33','Naresh','2021-09-06 13:18:33');
+/*!40000 ALTER TABLE `department001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `diagnosis001mb`
+--
+
+DROP TABLE IF EXISTS `diagnosis001mb`;
+CREATE TABLE `diagnosis001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `diagnosis` varchar(40) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `diagnosis001mb`
+--
+
+/*!40000 ALTER TABLE `diagnosis001mb` DISABLE KEYS */;
+INSERT INTO `diagnosis001mb` (`sl_no`,`unitslno`,`diagnosis`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (2,1,'Test','Naresh','2023-10-22 20:16:45',NULL,NULL),
+ (4,1,'Test3','Naresh','2023-10-22 20:19:18',NULL,NULL),
+ (5,1,'Test4','Naresh','2023-10-22 20:19:34',NULL,NULL),
+ (6,1,'Tes66','Naresh','2023-10-22 20:20:24',NULL,NULL);
+/*!40000 ALTER TABLE `diagnosis001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `doctor001mb`
+--
+
+DROP TABLE IF EXISTS `doctor001mb`;
+CREATE TABLE `doctor001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `d_first_name` varchar(40) NOT NULL,
+  `d_last_name` varchar(40) NOT NULL,
+  `specialist` varchar(40) NOT NULL,
+  `date_of_birth` datetime NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `contact` varchar(40) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `doctor001mb`
+--
+
+/*!40000 ALTER TABLE `doctor001mb` DISABLE KEYS */;
+INSERT INTO `doctor001mb` (`sl_no`,`unitslno`,`d_first_name`,`d_last_name`,`specialist`,`date_of_birth`,`email`,`contact`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,'Naresh','Kumar','Test','1997-12-27 00:00:00','nk607@gmail.com','9042180029','Naresh','2023-10-22 16:33:42','Naresh','2023-10-22 17:09:10'),
+ (4,1,'Yuvi','M','Test','1998-05-20 00:00:00','yuvi@gmail.com','9042180029','Naresh','2023-10-22 21:28:38',NULL,NULL);
+/*!40000 ALTER TABLE `doctor001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `monthlyexpenses001mb`
+--
+
+DROP TABLE IF EXISTS `monthlyexpenses001mb`;
+CREATE TABLE `monthlyexpenses001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `mname` varchar(40) NOT NULL,
+  `mnotes` varchar(40) NOT NULL,
+  `mamount` int(40) NOT NULL,
+  `mdate` datetime NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `monthlyexpenses001mb`
+--
+
+/*!40000 ALTER TABLE `monthlyexpenses001mb` DISABLE KEYS */;
+INSERT INTO `monthlyexpenses001mb` (`sl_no`,`unitslno`,`mname`,`mnotes`,`mamount`,`mdate`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,'Test','Test',1000,'2023-11-04 05:30:00','Naresh','2023-11-04 22:02:14',NULL,NULL),
+ (2,1,'test and test','salary',10000,'2023-11-04 05:30:00','Naresh','2023-11-04 22:03:10',NULL,NULL);
+/*!40000 ALTER TABLE `monthlyexpenses001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `patient001mb`
+--
+
+DROP TABLE IF EXISTS `patient001mb`;
+CREATE TABLE `patient001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `patient_id` varchar(40) NOT NULL,
+  `patient_fname` varchar(40) NOT NULL,
+  `patient_lname` varchar(40) NOT NULL,
+  `age` int(40) NOT NULL,
+  `sex` varchar(40) NOT NULL,
+  `address` varchar(40) NOT NULL,
+  `phone` varchar(40) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patient001mb`
+--
+
+/*!40000 ALTER TABLE `patient001mb` DISABLE KEYS */;
+INSERT INTO `patient001mb` (`sl_no`,`unitslno`,`patient_id`,`patient_fname`,`patient_lname`,`age`,`sex`,`address`,`phone`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (2,1,'SE/PRS/22-23/0001','Naresh','Kumar',25,'M','kuliathalai','9042180029','Naresh','2023-10-22 21:26:43',NULL,NULL),
+ (3,1,'SE/PRS/22-23/0002','punitha','krishnan',29,'F','Kulithalai','6384965407','Naresh','2023-10-22 21:27:32',NULL,NULL),
+ (4,1,'SE/PRS/22-23/0003','yuvi','M',25,'M','Kulithalai','9042180029','Naresh','2023-10-24 19:04:01',NULL,NULL);
+/*!40000 ALTER TABLE `patient001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `patientmaster001mb`
+--
+
+DROP TABLE IF EXISTS `patientmaster001mb`;
+CREATE TABLE `patientmaster001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `pc_patient_id` varchar(40) NOT NULL,
+  `pc_patient_fname` varchar(40) NOT NULL,
+  `pc_patient_lname` varchar(40) NOT NULL,
+  `display_lname` varchar(40) NOT NULL,
+  `treatment` varchar(40) NOT NULL,
+  `diagnosis` varchar(40) NOT NULL,
+  `age` int(40) NOT NULL,
+  `sex` varchar(40) NOT NULL,
+  `address` varchar(40) NOT NULL,
+  `phone` varchar(40) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patientmaster001mb`
+--
+
+/*!40000 ALTER TABLE `patientmaster001mb` DISABLE KEYS */;
+INSERT INTO `patientmaster001mb` (`sl_no`,`unitslno`,`pc_patient_id`,`pc_patient_fname`,`pc_patient_lname`,`display_lname`,`treatment`,`diagnosis`,`age`,`sex`,`address`,`phone`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,'AMK/10-23/0001','Naresh','Kumar','NareshKumar','Test ok, Test','Tes66',25,'M','Kulithalai','9042180029','Naresh','2023-10-31 23:03:02',NULL,NULL),
+ (2,1,'AMK/10-23/0002','yuvi','maanikam','yuvimaanikam','Test ok, Test','Test4',26,'M','kulithalai','9042180000','Naresh','2023-10-31 23:08:11',NULL,NULL),
+ (3,1,'AMK/10-23/0003','punitha','krishnan','punithakrishnan','Test ok, Test','Test3',30,'F','trichy','8870899888','Naresh','2023-10-31 23:08:52',NULL,NULL),
+ (4,1,'AMK/10-23/0004','moorthy','perumal','moorthyperumal','Test ok, Test','Tes66',29,'M','Trichy','9042180028','Naresh','2023-10-31 23:09:34',NULL,NULL),
+ (5,1,'AMK/10-23/0005','sriram','kannan','sriramkannan','Test ok, Test','Test3',25,'M','Thannerppali','9042180025','Naresh','2023-10-31 23:10:10',NULL,NULL);
+/*!40000 ALTER TABLE `patientmaster001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `patientop001mb`
+--
+
+DROP TABLE IF EXISTS `patientop001mb`;
+CREATE TABLE `patientop001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `pslno` int(11) NOT NULL,
+  `dslno` int(11) NOT NULL,
+  `pname` varchar(40) NOT NULL,
+  `age` int(40) NOT NULL,
+  `sex` varchar(40) NOT NULL,
+  `address` varchar(40) NOT NULL,
+  `phone` varchar(40) NOT NULL,
+  `diagnosis` varchar(40) NOT NULL,
+  `fees` int(40) DEFAULT NULL,
+  `balance` int(40) DEFAULT NULL,
+  `fstatus` varchar(40) NOT NULL,
+  `cdate` datetime NOT NULL,
+  `rdate` datetime NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`),
+  KEY `pslno` (`pslno`),
+  KEY `dslno` (`dslno`),
+  CONSTRAINT `patientop001mb_ibfk_1` FOREIGN KEY (`pslno`) REFERENCES `patient001mb` (`sl_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `patientop001mb_ibfk_2` FOREIGN KEY (`dslno`) REFERENCES `doctor001mb` (`sl_no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patientop001mb`
+--
+
+/*!40000 ALTER TABLE `patientop001mb` DISABLE KEYS */;
+INSERT INTO `patientop001mb` (`sl_no`,`unitslno`,`pslno`,`dslno`,`pname`,`age`,`sex`,`address`,`phone`,`diagnosis`,`fees`,`balance`,`fstatus`,`cdate`,`rdate`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,4,4,'yuvi',25,'M','Kulithalai','9042180029','Tes66',100,500,'partial paid','2023-10-28 00:00:00','2023-10-28 00:00:00','Naresh','2023-10-28 22:55:21','Naresh','2023-10-29 18:09:27'),
+ (2,1,3,1,'punitha',29,'F','Kulithalai','6384965407','Test4',123,123,'partial paid','2023-10-29 00:00:00','2023-10-29 00:00:00','Naresh','2023-10-29 17:43:10',NULL,NULL),
+ (3,1,3,4,'punitha',29,'F','Kulithalai','6384965407','Test4',200,0,'Paid','2023-10-29 00:00:00','2023-10-30 00:00:00','Naresh','2023-10-29 18:58:36',NULL,NULL),
+ (4,1,4,4,'yuvi',25,'M','Kulithalai','9042180029','Tes66',300,100,'partial paid','2023-11-02 00:00:00','2023-11-16 00:00:00','Naresh','2023-11-02 20:46:44',NULL,NULL);
+/*!40000 ALTER TABLE `patientop001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `patientpc001mb`
+--
+
+DROP TABLE IF EXISTS `patientpc001mb`;
+CREATE TABLE `patientpc001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `pcslno` int(11) NOT NULL,
+  `dcslno` int(11) NOT NULL,
+  `pname` varchar(40) NOT NULL,
+  `age` int(40) NOT NULL,
+  `sex` varchar(40) NOT NULL,
+  `address` varchar(40) NOT NULL,
+  `phone` varchar(40) NOT NULL,
+  `diagnosis` varchar(40) NOT NULL,
+  `treatment` varchar(40) NOT NULL,
+  `fees` int(40) DEFAULT NULL,
+  `balance` int(40) DEFAULT NULL,
+  `visit` varchar(40) DEFAULT NULL,
+  `fstatus` varchar(40) NOT NULL,
+  `date` datetime NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`),
+  KEY `pcslno` (`pcslno`),
+  KEY `dcslno` (`dcslno`),
+  CONSTRAINT `patientpc001mb_ibfk_1` FOREIGN KEY (`pcslno`) REFERENCES `patientmaster001mb` (`sl_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `patientpc001mb_ibfk_2` FOREIGN KEY (`dcslno`) REFERENCES `doctor001mb` (`sl_no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patientpc001mb`
+--
+
+/*!40000 ALTER TABLE `patientpc001mb` DISABLE KEYS */;
+INSERT INTO `patientpc001mb` (`sl_no`,`unitslno`,`pcslno`,`dcslno`,`pname`,`age`,`sex`,`address`,`phone`,`diagnosis`,`treatment`,`fees`,`balance`,`visit`,`fstatus`,`date`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (4,1,5,1,'sriramkannan',25,'M','Thannerppali','9042180025','Test3','Test ok, Test',100,200,NULL,'Paid','2023-11-01 23:22:36','Naresh','2023-11-01 23:23:29',NULL,NULL),
+ (5,1,4,1,'moorthyperumal',29,'M','Trichy','9042180028','Tes66','Test ok, Test',200,200,NULL,'partial paid','2023-11-01 23:22:36','Naresh','2023-11-01 23:23:29',NULL,NULL),
+ (6,1,3,1,'punithakrishnan',30,'F','trichy','8870899888','Test3','Test ok, Test',300,0,NULL,'Paid','2023-11-01 23:22:36','Naresh','2023-11-01 23:23:29',NULL,NULL),
+ (7,1,2,4,'yuvimaanikam',26,'M','kulithalai','9042180000','Test4','Test ok, Test',100,100,NULL,'Paid','2023-11-01 23:22:36','Naresh','2023-11-01 23:24:32',NULL,NULL),
+ (8,1,1,4,'NareshKumar',25,'M','Kulithalai','9042180029','Tes66','Test ok, Test',400,0,NULL,'Paid','2023-11-01 23:22:36','Naresh','2023-11-01 23:24:32',NULL,NULL);
+/*!40000 ALTER TABLE `patientpc001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `role001mb`
+--
+
+DROP TABLE IF EXISTS `role001mb`;
+CREATE TABLE `role001mb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `rolename` varchar(40) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role001mb`
+--
+
+/*!40000 ALTER TABLE `role001mb` DISABLE KEYS */;
+INSERT INTO `role001mb` (`id`,`unitslno`,`rolename`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,'superadmin','Naresh','2021-09-06 13:18:33','siva','2021-09-06 13:18:33'),
+ (2,1,'admin','Naresh','2021-09-06 13:18:33','siva','2021-09-06 13:18:33'),
+ (3,1,'user','Naresh','2021-09-06 13:18:33','siva','2021-09-06 13:18:33'),
+ (4,1,'guest','Naresh','2021-09-06 13:18:33','siva','2021-09-06 13:18:33');
+/*!40000 ALTER TABLE `role001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `status001mb`
+--
+
+DROP TABLE IF EXISTS `status001mb`;
+CREATE TABLE `status001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `code_group` int(11) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  `status` char(5) DEFAULT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `status001mb`
+--
+
+/*!40000 ALTER TABLE `status001mb` DISABLE KEYS */;
+INSERT INTO `status001mb` (`sl_no`,`unitslno`,`code_group`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`,`status`,`name`) VALUES 
+ (8,1,4,'setmt1','2022-08-03 15:44:30',NULL,NULL,'A','ACTIVE'),
+ (9,1,4,'setmt1','2022-08-03 15:45:23',NULL,NULL,'I','IN ACTIVE');
+/*!40000 ALTER TABLE `status001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `treatment001mb`
+--
+
+DROP TABLE IF EXISTS `treatment001mb`;
+CREATE TABLE `treatment001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `treatment` varchar(40) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `treatment001mb`
+--
+
+/*!40000 ALTER TABLE `treatment001mb` DISABLE KEYS */;
+INSERT INTO `treatment001mb` (`sl_no`,`unitslno`,`treatment`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,'Test','Naresh','2023-10-22 20:06:34',NULL,NULL),
+ (3,1,'Test ok','Naresh','2023-10-22 20:09:10',NULL,NULL);
+/*!40000 ALTER TABLE `treatment001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `unitdeptmaster001mb`
+--
+
+DROP TABLE IF EXISTS `unitdeptmaster001mb`;
+CREATE TABLE `unitdeptmaster001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `departsl_no` int(11) NOT NULL,
+  `unitsl_no` int(11) NOT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`),
+  KEY `departsl_no` (`departsl_no`),
+  KEY `unitsl_no` (`unitsl_no`),
+  CONSTRAINT `unitdeptmaster001mb_ibfk_1` FOREIGN KEY (`departsl_no`) REFERENCES `department001mb` (`sl_no`) ON DELETE CASCADE,
+  CONSTRAINT `unitdeptmaster001mb_ibfk_2` FOREIGN KEY (`unitsl_no`) REFERENCES `unitmaster001mb` (`sl_no`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `unitdeptmaster001mb`
+--
+
+/*!40000 ALTER TABLE `unitdeptmaster001mb` DISABLE KEYS */;
+INSERT INTO `unitdeptmaster001mb` (`sl_no`,`departsl_no`,`unitsl_no`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,1,'sekar1','2022-08-05 11:55:33','setmt1','2022-08-19 15:56:17'),
+ (3,1,2,'Naresh','2023-10-29 15:48:07',NULL,NULL);
+/*!40000 ALTER TABLE `unitdeptmaster001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `unitmaster001mb`
+--
+
+DROP TABLE IF EXISTS `unitmaster001mb`;
+CREATE TABLE `unitmaster001mb` (
+  `sl_no` int(11) NOT NULL AUTO_INCREMENT,
+  `unit_name` varchar(100) NOT NULL,
+  `unit_describtion` varchar(200) NOT NULL,
+  `status` char(10) DEFAULT NULL,
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`sl_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `unitmaster001mb`
+--
+
+/*!40000 ALTER TABLE `unitmaster001mb` DISABLE KEYS */;
+INSERT INTO `unitmaster001mb` (`sl_no`,`unit_name`,`unit_describtion`,`status`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,'Unit1','unit description','8','','2022-08-02 18:52:13','setmt2','2022-08-22 13:34:41'),
+ (2,'Unit2','unit description','8','','2022-08-02 19:07:30','setmt2','2022-08-22 13:32:49'),
+ (3,'Unit3','Test','8','Naresh','2023-10-29 15:21:41','Naresh','2023-10-29 15:21:41');
+/*!40000 ALTER TABLE `unitmaster001mb` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user001mb`
+--
+
+DROP TABLE IF EXISTS `user001mb`;
+CREATE TABLE `user001mb` (
+  `person_id` int(11) NOT NULL AUTO_INCREMENT,
+  `unitslno` int(11) NOT NULL,
+  `dpslno` int(11) NOT NULL,
+  `roleid` int(11) NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `lastname` varchar(45) NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `status` char(1) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `securityquestion` varchar(250) NOT NULL,
+  `securityanswer` varchar(250) NOT NULL,
+  `theme` varchar(10) DEFAULT '#286090',
+  `insert_user` varchar(40) NOT NULL,
+  `insert_datetime` datetime NOT NULL,
+  `updated_user` varchar(40) DEFAULT NULL,
+  `updated_datetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`person_id`),
+  KEY `unitslno` (`unitslno`),
+  KEY `dpslno` (`dpslno`),
+  KEY `roleid` (`roleid`),
+  CONSTRAINT `user001mb_ibfk_1` FOREIGN KEY (`unitslno`) REFERENCES `unitmaster001mb` (`sl_no`),
+  CONSTRAINT `user001mb_ibfk_2` FOREIGN KEY (`dpslno`) REFERENCES `department001mb` (`sl_no`),
+  CONSTRAINT `user001mb_ibfk_3` FOREIGN KEY (`roleid`) REFERENCES `role001mb` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user001mb`
+--
+
+/*!40000 ALTER TABLE `user001mb` DISABLE KEYS */;
+INSERT INTO `user001mb` (`person_id`,`unitslno`,`dpslno`,`roleid`,`firstname`,`lastname`,`username`,`password`,`status`,`email`,`securityquestion`,`securityanswer`,`theme`,`insert_user`,`insert_datetime`,`updated_user`,`updated_datetime`) VALUES 
+ (1,1,1,1,'','','Naresh','$2b$10$8xe6b3pcuGvl0jNRxzJlVeetMM96.Y.p4jqEceYHbPnkkVTUYIIGa','A','adc@gmail.com','What was your childhood nickname ?','ss','#286090','Naresh','2021-09-06 13:18:33','Naresh','2021-09-06 13:18:33'),
+ (2,2,1,1,'Naresh','Kumar','Nareshpk','$2b$10$j9EYffASPJuUjWM5pvzwSup2dkfPNj.9HvaZxCvPpMZYvFGXMU4ZC','A','nareshpk@gmail.com','What was your childhood nickname ?','Test','#286090','Naresh','2023-10-29 15:58:56',NULL,NULL);
+/*!40000 ALTER TABLE `user001mb` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

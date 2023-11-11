@@ -12,7 +12,7 @@ export class Monthlyexpenses001mb {
   @Column("varchar", { name: "mname", length: 40 })
   mname: string;
 
-  @Column("varchar", { name: "notes",  length: 40 })
+  @Column("varchar", { name: "mnotes",  length: 40 })
   mnotes: string;
 
   @Column("int", { name: "mamount" })

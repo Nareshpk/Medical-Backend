@@ -19,6 +19,7 @@ import { PatientPcModule } from './module/PatientPc.module';
 import { PatientMasterModule } from './module/patientmaster.module';
 import { MonthlyexpensesModule } from './module/Monthlyexpenses.module';
 import { DayilyexpensesModule } from './module/Dayilyexpenses.module';
+import { ExceldownloadModule } from './module/Exceldownload.module';
 
 
 @Module({
@@ -64,7 +65,8 @@ import { DayilyexpensesModule } from './module/Dayilyexpenses.module';
         PatientPcModule,
         PatientMasterModule,
         MonthlyexpensesModule,
-        DayilyexpensesModule
+        DayilyexpensesModule,
+        ExceldownloadModule
     ]
 })
 
