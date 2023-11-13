@@ -14,7 +14,7 @@ export class UnitDepartMasterController {
 
     // @hasRole(Role.superadmin, Role.admin, Role.user, Role.guest)
     // @UseGuards(JwtAuthGuard, RolesGuard)
-    @Get('findAll/')
+    @Get('findAll')
     findAll(): Promise<Unitdeptmaster001mb[]> {
         return this.unitDepartMasterService.findAll();
     }
