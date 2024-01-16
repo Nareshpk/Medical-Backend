@@ -2,6 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Patientop001mb } from "./Patientop001mb";
 import { Patientpc001mb } from "./Patientpc001mb";
 import { DoctorDTO } from "src/dto/doctor.dto";
+import { Allowance001mb } from "./Allowance001mb";
 
 @Entity("doctor001mb", { schema: "medical" })
 export class Doctor001mb {
@@ -46,6 +47,9 @@ export class Doctor001mb {
 
   @OneToMany(() => Patientpc001mb, (patientpc001mb) => patientpc001mb.dcslno2)
   patientpc001mbs: Patientpc001mb[];
+
+  @OneToMany(() => Allowance001mb, (allowance001mb) => allowance001mb.sslno2)
+  allowance001mbs: Allowance001mb[];
 
 
   setProperties(doctorDTO: DoctorDTO) {

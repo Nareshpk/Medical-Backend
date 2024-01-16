@@ -2,6 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Unitdeptmaster001mb } from "./Unitdeptmaster001mb";
 import { User001mb } from "./User001mb";
 import { UnitMasterDTO } from "src/dto/usermaster.dto";
+import { Distribution001mb } from "./Distribution001mb";
 
 @Entity("unitmaster001mb", { schema: "medical" })
 export class Unitmaster001mb {
@@ -28,6 +29,12 @@ export class Unitmaster001mb {
 
   @Column("datetime", { name: "updated_datetime", nullable: true })
   updatedDatetime: Date | null;
+
+  @OneToMany(
+    () => Distribution001mb,
+    (distribution001mb) => distribution001mb.clinicslno2
+  )
+  distribution001mbs: Distribution001mb[];
 
   @OneToMany(
     () => Unitdeptmaster001mb,

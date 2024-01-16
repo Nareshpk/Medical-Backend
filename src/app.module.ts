@@ -20,6 +20,11 @@ import { PatientMasterModule } from './module/patientmaster.module';
 import { MonthlyexpensesModule } from './module/Monthlyexpenses.module';
 import { DayilyexpensesModule } from './module/Dayilyexpenses.module';
 import { ExceldownloadModule } from './module/Exceldownload.module';
+import { AllowanceModule } from './module/Allowance.module';
+import { ProdmasterModule } from './module/prodmaster.module';
+import { CustomerModule } from './module/Customer.module';
+import { DistributionModule } from './module/Distribution.module';
+import { ProdbuyModule } from './module/Prodbuy.module';
 
 
 @Module({
@@ -66,7 +71,12 @@ import { ExceldownloadModule } from './module/Exceldownload.module';
         PatientMasterModule,
         MonthlyexpensesModule,
         DayilyexpensesModule,
-        ExceldownloadModule
+        ExceldownloadModule,
+        AllowanceModule,
+        ProdmasterModule,
+        CustomerModule,
+        DistributionModule,
+        ProdbuyModule
     ]
 })
 
