@@ -18,7 +18,7 @@ export class Prodmaster001mb {
   @Column("varchar", { name: "prod_name", length: 40 })
   prodName: string;
 
-  @Column("varchar", { name: "prod_price", length: 40 })
+  @Column("varchar", { name: "prod_price", length: 40 }) 
   prodPrice: string;
 
   @Column("varchar", { name: "qty", length: 40 })
