@@ -5,7 +5,7 @@ export class ProdbuyDTO {
     unitslno: number;
     date: Date;
     total:string;
-    prodName: string;
+    proSlno: number;
     prodPrice: string;
     qty: string;
     insertUser: string;
@@ -18,7 +18,7 @@ export class ProdbuyDTO {
         this.unitslno = prodbuy001mb.unitslno;
         this.date =prodbuy001mb.date;
         this.total = prodbuy001mb.total;
-        this.prodName = prodbuy001mb.prodName;
+        this.proSlno = prodbuy001mb.proSlno;
         this.prodPrice = prodbuy001mb.prodPrice;
         this.qty = prodbuy001mb.qty;
         this.insertUser = prodbuy001mb.insertUser;

@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Customer001mb } from "./Customer001mb";
 import { Distribution001mb } from "./Distribution001mb";
+import { Prodbuy001mb } from "./Prodbuy001mb";
 import { ProdmasterDTO } from "src/dto/Prodmaster.dto";
 
 @Entity("prodmaster001mb", { schema: "medical" })
@@ -43,6 +44,10 @@ export class Prodmaster001mb {
     (distribution001mb) => distribution001mb.prodslno2
   )
   distribution001mbs: Distribution001mb[];
+
+  @OneToMany(() => Prodbuy001mb, (prodbuy001mb) => prodbuy001mb.proSlno2)
+  prodbuy001mbs: Prodbuy001mb[];
+
 
   setProperties(prodmasterDTO: ProdmasterDTO) {
     this.slNo = prodmasterDTO.slNo;
